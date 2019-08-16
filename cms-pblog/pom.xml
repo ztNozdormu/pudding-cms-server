@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>pudding-cms-server</artifactId>
+        <groupId>com.mohism.pudding</groupId>
+        <version>0.0.1</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <modules>
+        <module>cms-pblog-interface</module>
+        <module>cms-pblog-server</module>
+    </modules>
+    <artifactId>cms-pblog</artifactId>
+
+    <name>cms-pblog</name>
+    <url>http://www.pblog.com</url>
+    <description>cms系统--博客业务模块</description>
+
+</project>

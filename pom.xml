@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.mohism.pudding</groupId>
+  <artifactId>pudding-cms-server</artifactId>
+  <version>0.0.1</version>
+  <modules>
+    <module>cms-pblog</module>
+  </modules>
+
+  <packaging>pom</packaging>
+  <name>pudding-cms-server</name>
+  <description>cms系统业务、内容服务业务、博客系统业务</description>
+  <url>https://github.com/ztNozdormu/pudding-kernel.git</url>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.1.4.RELEASE</version>
+  </parent>
+
+  <properties>
+    <java.version>1.8</java.version>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring-cloud-alibaba.version>0.2.1.RELEASE</spring-cloud-alibaba.version>
+    <lombok.versin>1.18.4</lombok.versin>
+    <mp.version>3.1.0</mp.version>
+    <pudding-kernel.version>0.0.1</pudding-kernel.version>
+    <project.version>0.0.1</project.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!--本项目的依赖管理-->
+      <!--本框架的依赖管理-->
+      <dependency>
+        <groupId>com.mohism.pudding</groupId>
+        <artifactId>kernel-model</artifactId>
+        <version>${pudding-kernel.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.mohism.pudding</groupId>
+        <artifactId>kernel-core</artifactId>
+        <version>${pudding-kernel.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.mohism.pudding</groupId>
+        <artifactId>kernel-logger</artifactId>
+        <version>${pudding-kernel.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.mohism.pudding</groupId>
+        <artifactId>kernel-scanner</artifactId>
+        <version>${pudding-kernel.version}</version>
+      </dependency>
+
+      <!--spring cloud-->
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>Finchley.RELEASE</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!--spring cloud alibaba-->
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+        <version>${spring-cloud-alibaba.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.7.0</version>
+          <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>3.0.1</version>
+          <configuration>
+            <attach>true</attach>
+          </configuration>
+          <executions>
+            <execution>
+              <phase>compile</phase>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>2.9.1</version>
+          <executions>
+            <execution>
+              <phase>package</phase>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <additionalparam>-Xdoclint:none</additionalparam>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>1.5</version>
+          <executions>
+            <execution>
+              <phase>verify</phase>
+              <goals>
+                <goal>sign</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.xml</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
+
+  <developers>
+    <developer>
+      <name>real earth</name>
+      <email>2307631397@qq.com</email>
+    </developer>
+  </developers>
+
+  <!--  <scm>-->
+  <!--    <connection>scm:git@gitee.com:stylefeng-Roses/roses-biz-support.git</connection>-->
+  <!--    <developerConnection>scm:git@gitee.com:stylefeng-Roses/roses-biz-support.git</developerConnection>-->
+  <!--    <url>https://gitee.com/stylefeng-Roses/roses-biz-support</url>-->
+  <!--  </scm>-->
+  <!--正式版本-->
+  <profiles>
+    <profile>
+      <id>release</id>
+      <properties>
+        <project.version>0.0.1</project.version>
+      </properties>
+    </profile>
+  </profiles>
+  <!--定义snapshots库和releases库的nexus地址-->
+  <distributionManagement>
+    <repository>
+      <id>nexus-releases</id>
+      <url>
+        http://47.107.170.59:8081/repository/maven-releases/
+      </url>
+    </repository>
+    <snapshotRepository>
+      <id>nexus-snapshots</id>
+      <url>
+        http://47.107.170.59:8081/repository/maven-snapshots/
+      </url>
+    </snapshotRepository>
+  </distributionManagement>
+</project>
